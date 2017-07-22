@@ -1,15 +1,13 @@
 # get-brotli-dictionary
 [Brotli](https://github.com/google/brotli) is an excellent open source data compression library. (see [Wikipedia](https://en.wikipedia.org/wiki/Brotli))
-It is very good ratio for web object compression with using the embedded pre-defined 120 kilobyte dictionary derived from a large corpus.
+It has very good ratio for web object compression with using the embedded pre-defined 120 kilobyte dictionary derived from a large corpus.
 
-This repository is stored a simple tool to extract the dictionary from [RFC 7932](https://tools.ietf.org/html/rfc7932) and the extracted dictionary binary file.
+This repository is stored a simple script to extract the dictionary from [RFC 7932](https://tools.ietf.org/html/rfc7932) and the extracted dictionary binary file.
 
 ## dictionary license
 The dictionary file is under "Simplified BSD License".
 
 Copyright (c) 2016 IETF Trust, J. Alakuijala and Z. Szabadka All rights reserved.
-
-Copyright (c) <insert year> IETF Trust and the persons identified as authors of the code. All rights reserved.
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
@@ -28,10 +26,10 @@ $ zstd -19 index.html
 index.html           : 23.66%   ( 56770 =>  13434 bytes, index.html.zst)
 $ zstd -19 -D brotli.dic index.html
 index.html           : 22.00%   ( 56770 =>  12492 bytes, index.html.zst) 
-$ # FYI
 $ bro --input index.html | wc -c
 11552
 $ gzip -c index.html | wc -c
 14049
 ```
+notes: The brotli dictionary is not completely a byte stream but a complex word set and used with additional 120 word transformation rules. However zstd accept it as a pure byte stream.
 
